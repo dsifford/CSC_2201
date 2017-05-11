@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "stdexcept": "cpp"
+        ".babelrc": "json5",
+        ".stylintrc": "json",
+        "stdexcept": "cpp",
+        "cstring": "cpp"
     }
 }
