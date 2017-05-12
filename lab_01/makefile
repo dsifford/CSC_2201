@@ -8,9 +8,9 @@ BIN_PATH = bin
 
 OBJS = text.o textio.o test.o
 
-all: test
+all: build
 
-test: bootstrap $(OBJS)
+build: bootstrap $(OBJS)
 	$(CC) $(LFLAGS) $(BUILD_PATH)/* -o $(BIN_PATH)/test
 
 text.o: Text.cpp
