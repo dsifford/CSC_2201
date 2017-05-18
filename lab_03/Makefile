@@ -5,18 +5,18 @@ CFLAGS = -c $(LFLAGS)
 
 BUILD_PATH = build
 BIN_PATH = bin
+# $(CC) $(LFLAGS) sumintegers.cpp -o $(BIN_PATH)/sumintegers
+# $(CC) $(LFLAGS) test3dna.cpp -o $(BIN_PATH)/test3dna
 
 all: build
 
 build: bootstrap ListArray.o show3.o
-	$(CC) $(LFLAGS) sumintegers.cpp -o $(BIN_PATH)/sumintegers
-	$(CC) $(LFLAGS) test3.cpp -o $(BIN_PATH)/test3
-	$(CC) $(LFLAGS) test3dna.cpp -o $(BIN_PATH)/test3dna
+	$(CC) $(LFLAGS) build/ListArray.o build/show3.o test3.cpp -o $(BIN_PATH)/test3
 
-ListArray.o: ListArray.cpp
+ListArray.o: ListArray.cpp ListArray.h
 	$(CC) $(CFLAGS) -o $(BUILD_PATH)/ListArray.o ListArray.cpp
 
-show3.o: show3.cpp
+show3.o: show3.cpp ListArray.h
 	$(CC) $(CFLAGS) -o $(BUILD_PATH)/show3.o show3.cpp
 
 .PHONY: bootstrap
@@ -29,4 +29,4 @@ clean:
 
 .PHONY: run
 run:
-	@ ./bin/test
+	@ ./bin/test3

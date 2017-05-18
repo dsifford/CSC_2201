@@ -1,3 +1,5 @@
+// Note to the reader: This nightmare of a function was not written by me.
+//
 //--------------------------------------------------------------------
 //
 //  Laboratory 3                                          show3.cpp
@@ -17,46 +19,47 @@ void List<DataType>::showStructure() const
 // purposes only.
 
 {
-    int j; // loop counter
+	int j; // loop counter
 
-    if (size == 0)
-        cout << "empty list" << endl;
-    // The Ordered List code blows up below. Since this is just debugging
-    // code, we check for whether the OrderedList is defined, and if so,
-    // print out the key value. If not, we try printing out the entire item.
-    // Note: This assumes that you have used the double-inclusion protection
-    // in your OrderedList.cpp file by doing a "#ifndef ORDEREDLIST_CPP", etc.
-    // If not, you will need to comment out the code in the section under
-    // the "else", otherwise the compiler will go crazy in lab 4.
-    // The alternative is to overload operator<< for all data types used in
-    // the ordered list.
-    else
-    {
-        cout << "size = " << size
-             << "   cursor = " << cursor << endl;
-        for (j = 0; j < maxSize; j++)
-            cout << j << "\t";
-        cout << endl;
-        for (j = 0; j < size; j++)
-        {
-            if (j == cursor)
-            {
-                cout << "[";
-                cout << dataItems[j]
+	if (size == 0)
+		cout << "empty list" << endl;
+	// The Ordered List code blows up below. Since this is just debugging
+	// code, we check for whether the OrderedList is defined, and if so,
+	// print out the key value. If not, we try printing out the entire item.
+	// Note: This assumes that you have used the double-inclusion protection
+	// in your OrderedList.cpp file by doing a "#ifndef ORDEREDLIST_CPP", etc.
+	// If not, you will need to comment out the code in the section under
+	// the "else", otherwise the compiler will go crazy in lab 4.
+	// The alternative is to overload operator<< for all data types used in
+	// the ordered list.
+	else
+	{
+		cout << "size = " << size
+			 << "   cursor = " << cursor << endl;
+		for (j = 0; j < maxSize; j++)
+			cout << j << "\t";
+		cout << endl;
+		for (j = 0; j < size; j++)
+		{
+			if (j == cursor)
+			{
+				cout << "[";
+				cout << dataItems[j]
 #ifdef ORDEREDLIST_CPP
-                            .getKey()
+                            
+							.getKey()
 #endif
-                    ;
-                cout << "]";
-                cout << "\t";
-            }
-            else
-                cout << dataItems[j]
+					;
+				cout << "]";
+				cout << "\t";
+			}
+			else
+				cout << dataItems[j]
 #ifdef ORDEREDLIST_CPP
-                            .getKey()
+							.getKey()
 #endif
-                     << "\t";
-        }
-        cout << endl;
-    }
+					 << "\t";
+		}
+		cout << endl;
+	}
 }
