@@ -1,10 +1,10 @@
-//--------------------------------------------------------------------
+// --------------------------------------------------------------------
 //
 //  Laboratory 5                                          ListLinked.h
 //
 //  Class declaration for the linked implementation of the List ADT
 //
-//--------------------------------------------------------------------
+// --------------------------------------------------------------------
 
 #ifndef LISTLINKED_H
 #define LISTLINKED_H
@@ -13,52 +13,51 @@
 
 #include <stdexcept>
 #include <iostream>
-
 using namespace std;
 
-template <typename T>
+template<typename T>
 class List {
-  public:
-    List(int ignored = 0);
-    List(const List& other);
-    List& operator=(const List& other);
-    ~List();
+	public:
+		List(int ignored = 0);
+		List(const List &other);
+		List& operator=(const List &other);
 
-    void insert(const T& newDataItem) throw (logic_error);
-    void remove() throw (logic_error);
-    void replace(const T& newDataItem) throw (logic_error);
-    void clear();
+		~List();
 
-    bool isEmpty() const;
-    bool isFull() const;
+		void insert(const T &newDataItem) throw(logic_error);
+		void remove() throw(logic_error);
+		void replace(const T &newDataItem) throw(logic_error);
+		void clear();
 
-    void gotoBeginning() throw (logic_error);
-    void gotoEnd() throw (logic_error);
-    bool gotoNext() throw (logic_error);
-    bool gotoPrior() throw (logic_error);
+		bool isEmpty() const;
+		bool isFull() const;
 
-    T getCursor() const throw (logic_error);
+		void gotoBeginning() throw(logic_error);
+		void gotoEnd() throw(logic_error);
+		bool gotoNext() throw(logic_error);
+		bool gotoPrior() throw(logic_error);
 
-    // Programming exercise 2
-    void moveToBeginning () throw (logic_error);
+		T getCursor() const throw(logic_error);
 
-    // Programming exercise 3
-    void insertBefore(const T& newDataItem) throw (logic_error);
-    
-    void showStructure() const;
+		// Programming exercise 2
+		void moveToBeginning() throw(logic_error);
 
-  private:
-    class ListNode {
-      public:
-	ListNode(const T& nodeData, ListNode* nextPtr);
+		// Programming exercise 3
+		void insertBefore(const T &newDataItem) throw(logic_error);
 
-	T dataItem;
-	ListNode* next;
-    };
+		void showStructure() const;
 
-    ListNode* head;
-    ListNode* cursor;
+	private:
+		class ListNode {
+			public:
+				ListNode(const T &nodeData, ListNode *nextPtr);
 
+				T dataItem;
+				ListNode *next;
+		};
+
+		ListNode *head;
+		ListNode *cursor;
 };
 
 #endif

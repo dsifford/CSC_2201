@@ -9,7 +9,6 @@
 #include <iostream>
 #include "config.h"
 #include "ListLinked.cpp"
-
 using namespace std;
 
 void print_help();
@@ -31,7 +30,7 @@ int  main()
     {
         testList.showStructure();                     // Output list
 
-        cout << endl << "Command: ";                  // Read command
+        std::cout << std::endl << "Command: ";                  // Read command
         cin >> cmd;
         if ( cmd == '+'  ||  cmd == '='  ||  cmd == '#' )
            cin >> testData;
