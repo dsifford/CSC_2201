@@ -77,3 +77,23 @@ int main() {
 //
 //  Insert your countBases function below.
 //
+void countBases(List<char> &dnaSequence, int &aCount, int &cCount, int &tCount, int &gCount) {
+	aCount = cCount = tCount = gCount = 0;
+	dnaSequence.gotoBeginning();
+	do {
+		char base = dnaSequence.getCursor();
+		switch (static_cast<int>(base)) {
+			case 65:
+				aCount++;
+				break;
+			case 67:
+				cCount++;
+				break;
+			case 71:
+				gCount++;
+				break;
+			case 84:
+				tCount++;
+		}
+	} while (dnaSequence.gotoNext());
+}
