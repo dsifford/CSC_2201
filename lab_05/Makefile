@@ -14,9 +14,6 @@ build: bootstrap ListLinked.o show5.o
 ListLinked.o: ListLinked.cpp ListLinked.h
 	$(CC) $(CFLAGS) $*.cpp -o $(BUILD_PATH)/$@
 
-# ListLinked.o: ListLinked.cpp ListLinked.h
-# 	$(CC) $(CFLAGS) -o $(BUILD_PATH)/ListLinked.o ListLinked.cpp
-
 show5.o: show5.cpp ListLinked.h
 	$(CC) $(CFLAGS) -o $(BUILD_PATH)/show5.o show5.cpp
 
