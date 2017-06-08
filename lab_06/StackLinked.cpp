@@ -1,3 +1,4 @@
+// Author: Derek Sifford
 #include "StackLinked.h"
 
 template<typename T>

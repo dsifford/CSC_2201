@@ -1,3 +1,4 @@
+// Author: Derek Sifford
 #include "StackArray.h"
 
 template<typename T>
