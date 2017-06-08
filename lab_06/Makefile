@@ -30,4 +30,4 @@ clean:
 
 .PHONY: run
 run:
-	@ ./bin/test5
+	@ ./bin/test6

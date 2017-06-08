@@ -1,57 +1,56 @@
-//--------------------------------------------------------------------
+// --------------------------------------------------------------------
 //
 //  Laboratory 6                                          StackArray.h
-// 
+//
 //  Class declaration for the array implementation of the Stack ADT
 //
-//--------------------------------------------------------------------
+// --------------------------------------------------------------------
 
 #ifndef STACKARRAY_H
 #define STACKARRAY_H
 
 #include <stdexcept>
 #include <iostream>
-
 using namespace std;
 
 #include "Stack.h"
 
-template <typename DataType>
-class StackLinked : public Stack<DataType> {
+template<typename T>
+class StackLinked: public Stack<T> {
 
-  public:
+    public:
 
-    StackLinked(int maxNumber = Stack<DataType>::MAX_STACK_SIZE);
-    StackLinked(const StackLinked& other);
-    StackLinked& operator=(const StackLinked& other);
-    ~StackLinked();
+        StackLinked(int maxNumber = Stack<T>::MAX_STACK_SIZE);
+        StackLinked(const StackLinked &other);
+        StackLinked& operator=(const StackLinked &other);
 
-    void push(const DataType& newDataItem) throw (logic_error);
-    DataType pop() throw (logic_error);
+        ~StackLinked();
 
-    void clear();
+        void push(const T &newDataItem) throw(logic_error);
+        T pop() throw(logic_error);
 
-    bool isEmpty() const;
-    bool isFull() const;
+        void clear();
 
-    void showStructure() const;
+        bool isEmpty() const;
+        bool isFull() const;
 
-  private:
+        void showStructure() const;
 
-    class StackNode {
-      public:
-	StackNode(const DataType& nodeData, StackNode* nextPtr)
-	{
-		dataItem = nodeData;
-		next = nextPtr;
-	}
+    private:
 
-	DataType dataItem;
-	StackNode* next;
-    };
+        class StackNode {
+            public:
+                StackNode(const T &nodeData, StackNode *nextPtr) {
+                    dataItem = nodeData;
+                    next = nextPtr;
+                }
 
-    StackNode* top;
+                T dataItem;
+                StackNode *next;
+        };
+		int maxSize;
+		int size;
+        StackNode *top;
 };
 
-#endif		//#ifndef STACKARRAY_H
-
+#endif          // #ifndef STACKARRAY_H

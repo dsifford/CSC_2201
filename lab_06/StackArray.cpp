@@ -1,83 +1,98 @@
-
 #include "StackArray.h"
 
-template <typename DataType>
-StackArray<DataType>::StackArray(int maxNumber)
-{
+template<typename T>
+StackArray<T>::StackArray(int maxNumber) {
+	maxSize = maxNumber;
+	dataItems = new T;
+	top = -1;
 }
 
-template <typename DataType>
-StackArray<DataType>::StackArray(const StackArray& other)
-{
+template<typename T>
+StackArray<T>::StackArray(const StackArray &other) {
+	maxSize = other.maxNumber;
+	dataItems = new T;
+	top = -1;
+	while (top != other.top) {
+		push(other.dataItems[top]);
+	}
 }
 
-template <typename DataType>
-StackArray<DataType>& StackArray<DataType>::operator=(const StackArray& other)
-{
+template<typename T>
+StackArray<T>&StackArray<T>::operator=(const StackArray &other) {
+	while (top > other.top) {
+		pop();
+	}
+	top = -1;
+	while (top != other.top) {
+		push(other.dataItems[top]);
+	}
 }
 
-template <typename DataType>
-StackArray<DataType>::~StackArray()
-{
+template<typename T>
+StackArray<T>::~StackArray() {
+	clear();
+	delete [] dataItems;
 }
 
-template <typename DataType>
-void StackArray<DataType>::push(const DataType& newDataItem) throw (logic_error)
-{
+template<typename T>
+void StackArray<T>::push(const T &newDataItem) throw(logic_error) {
+	if (isFull()) {
+		throw logic_error("Stack is already full");
+	}
+	top++;
+	dataItems[top] = newDataItem;
 }
 
-template <typename DataType>
-DataType StackArray<DataType>::pop() throw (logic_error)
-{
-
+template<typename T>
+T StackArray<T>::pop() throw(logic_error) {
+	if (isEmpty()) {
+		throw logic_error("Stack is empty");
+	}
+	return dataItems[top--];
 }
 
-template <typename DataType>
-void StackArray<DataType>::clear()
-{
+template<typename T>
+void StackArray<T>::clear() {
+	while (!isEmpty()) {
+		pop();
+	}
 }
 
-template <typename DataType>
-bool StackArray<DataType>::isEmpty() const
-{
-	return false;
+template<typename T>
+bool StackArray<T>::isEmpty() const {
+	return top == -1;
 }
 
-template <typename DataType>
-bool StackArray<DataType>::isFull() const
-{
-	return false;
+template<typename T>
+bool StackArray<T>::isFull() const {
+	return top == maxSize - 1;
 }
 
-template <typename DataType>
-void StackArray<DataType>::showStructure() const 
-
+template<typename T>
+void StackArray<T>::showStructure() const
 // Array implementation. Outputs the data items in a stack. If the
 // stack is empty, outputs "Empty stack". This operation is intended
 // for testing and debugging purposes only.
-
 {
-    if( isEmpty() ) {
-	cout << "Empty stack." << endl;
-    }
-    else {
-	int j;
-	cout << "Top = " << top << endl;
-	for ( j = 0 ; j < maxSize ; j++ )
-	    cout << j << "\t";
-	cout << endl;
-	for ( j = 0 ; j <= top  ; j++ )
-	{
-	    if( j == top )
-	    {
-	        cout << '[' << dataItems[j] << ']'<< "\t"; // Identify top
-	    }
-	    else
-	    {
-		cout << dataItems[j] << "\t";
-	    }
+	if (isEmpty()) {
+		cout << "Empty stack." << endl;
+	}
+	else {
+		int j;
+		cout << "Top = " << top << endl;
+		for (j = 0; j < maxSize; j++) {
+			cout << j << "\t";
+		}
+		cout << endl;
+		for (j = 0; j <= top; j++) {
+			if (j == top) {
+				cout << '[' << dataItems[j] << ']' << "\t"; // Identify top
+			}
+			else {
+				cout << dataItems[j] << "\t";
+			}
+		}
+		cout << endl;
 	}
 	cout << endl;
-    }
-    cout << endl;
 }
