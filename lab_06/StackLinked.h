@@ -6,8 +6,8 @@
 //
 // --------------------------------------------------------------------
 
-#ifndef STACKARRAY_H
-#define STACKARRAY_H
+#ifndef STACKLINKED_H
+#define STACKLINKED_H
 
 #include <stdexcept>
 #include <iostream>
@@ -53,4 +53,4 @@ class StackLinked: public Stack<T> {
 		StackNode *top;
 };
 
-#endif          // #ifndef STACKARRAY_H
+#endif          // #ifndef STACKLINKED_H
