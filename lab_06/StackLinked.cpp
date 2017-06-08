@@ -51,7 +51,7 @@ StackLinked<T>::~StackLinked() {
 }
 
 template<typename T>
-void StackLinked<T>::push(const T &newDataItem) throw(logic_error) {
+void StackLinked<T>::push(const T &newDataItem) {
 	if (isFull()) {
 		throw logic_error("Stack is already full");
 	}
@@ -65,7 +65,7 @@ void StackLinked<T>::push(const T &newDataItem) throw(logic_error) {
 }
 
 template<typename T>
-T StackLinked<T>::pop() throw(logic_error) {
+T StackLinked<T>::pop() {
 	if (isEmpty()) {
 		throw logic_error("Stack is already empty");
 	}

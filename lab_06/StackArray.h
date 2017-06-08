@@ -24,8 +24,8 @@ class StackArray: public Stack<T> {
 
 		~StackArray();
 
-		void push(const T &newDataItem) throw(logic_error);
-		T pop() throw(logic_error);
+		void push(const T &newDataItem);
+		T pop();
 
 		void clear();
 

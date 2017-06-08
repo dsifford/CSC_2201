@@ -35,7 +35,7 @@ StackArray<T>::~StackArray() {
 }
 
 template<typename T>
-void StackArray<T>::push(const T &newDataItem) throw(logic_error) {
+void StackArray<T>::push(const T &newDataItem) {
 	if (isFull()) {
 		throw logic_error("Stack is already full");
 	}
@@ -44,7 +44,7 @@ void StackArray<T>::push(const T &newDataItem) throw(logic_error) {
 }
 
 template<typename T>
-T StackArray<T>::pop() throw(logic_error) {
+T StackArray<T>::pop() {
 	if (isEmpty()) {
 		throw logic_error("Stack is empty");
 	}
