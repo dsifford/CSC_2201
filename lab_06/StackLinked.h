@@ -18,39 +18,39 @@ using namespace std;
 template<typename T>
 class StackLinked: public Stack<T> {
 
-    public:
+	public:
 
-        StackLinked(int maxNumber = Stack<T>::MAX_STACK_SIZE);
-        StackLinked(const StackLinked &other);
-        StackLinked& operator=(const StackLinked &other);
+		StackLinked(int maxNumber = Stack<T>::MAX_STACK_SIZE);
+		StackLinked(const StackLinked &other);
+		StackLinked& operator=(const StackLinked &other);
 
-        ~StackLinked();
+		~StackLinked();
 
-        void push(const T &newDataItem);
-        T pop();
+		void push(const T &newDataItem);
+		T pop();
 
-        void clear();
+		void clear();
 
-        bool isEmpty() const;
-        bool isFull() const;
+		bool isEmpty() const;
+		bool isFull() const;
 
-        void showStructure() const;
+		void showStructure() const;
 
-    private:
+	private:
 
-        class StackNode {
-            public:
-                StackNode(const T &nodeData, StackNode *nextPtr) {
-                    dataItem = nodeData;
-                    next = nextPtr;
-                }
+		class StackNode {
+			public:
+				StackNode(const T &nodeData, StackNode *nextPtr) {
+					dataItem = nodeData;
+					next = nextPtr;
+				}
 
-                T dataItem;
-                StackNode *next;
-        };
+				T dataItem;
+				StackNode *next;
+		};
 		int maxSize;
 		int size;
-        StackNode *top;
+		StackNode *top;
 };
 
 #endif          // #ifndef STACKARRAY_H
