@@ -4,6 +4,6 @@
  */
 
 #define LAB7_TEST1	0	// 0 => use array implementation, 1 => use linked impl.
-#define LAB7_TEST2	0	// Programming exercise 2: putFront and getRear
-#define LAB7_TEST3	0	// Programming exercise 3: getLength
+#define LAB7_TEST2	1	// Programming exercise 2: putFront and getRear
+#define LAB7_TEST3	1	// Programming exercise 3: getLength
 

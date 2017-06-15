@@ -2,44 +2,45 @@
 
 #include <stdexcept>
 #include <iostream>
-
 using namespace std;
 
 #include "Queue.h"
 
-template <typename DataType>
-class QueueLinked : public Queue<DataType> {
-  public:
-	QueueLinked(int maxNumber = Queue<DataType>::MAX_QUEUE_SIZE);
-	QueueLinked(const QueueLinked& other);
-	QueueLinked& operator=(const QueueLinked& other);
-	~QueueLinked();
+template<typename T>
+class QueueLinked: public Queue<T> {
+	public:
+		QueueLinked(int maxNumber = Queue<T>::MAX_QUEUE_SIZE);
+		QueueLinked(const QueueLinked &other);
+		QueueLinked& operator=(const QueueLinked &other);
 
-	void enqueue(const DataType& newDataItem) throw (logic_error);
-	DataType dequeue() throw (logic_error);
+		~QueueLinked();
 
-	void clear();
+		void enqueue(const T &newDataItem);
+		T dequeue();
 
-	bool isEmpty() const;
-	bool isFull() const;
+		void clear();
 
-	// Programming Exercise 2
-	void putFront(const DataType& newDataItem) throw (logic_error);
-	DataType getRear() throw (logic_error);
-	// Programming Exercise 3
-	int getLength() const;
+		bool isEmpty() const;
+		bool isFull() const;
 
-	void showStructure() const;
+		// Programming Exercise 2
+		void putFront(const T &newDataItem);
+		T getRear();
 
-  private:
-	class QueueNode {
-	  public:
-	QueueNode(const DataType& nodeData, QueueNode* nextPtr);
+		// Programming Exercise 3
+		int getLength() const;
 
-	DataType dataItem;
-	QueueNode* next;
-	};
+		void showStructure() const;
 
-	QueueNode* front;
-	QueueNode* back;
+	private:
+		class QueueNode {
+			public:
+				QueueNode(const T &nodeData, QueueNode *nextPtr);
+
+				T dataItem;
+				QueueNode *next;
+		};
+
+		QueueNode *front;
+		QueueNode *back;
 };

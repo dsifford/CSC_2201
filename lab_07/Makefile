@@ -17,9 +17,6 @@ QueueArray.o: QueueArray.cpp QueueArray.h Queue.h
 QueueLinked.o: QueueLinked.cpp QueueLinked.h Queue.h
 	$(CC) $(CFLAGS) $*.cpp -o $(BUILD_PATH)/$@
 
-show7.o: Queue.h QueueLinked.h QueueArray.h show7.cpp
-	$(CC) $(CFLAGS) $*.cpp -o $(BUILD_PATH)/$@
-
 .PHONY: bootstrap
 bootstrap:
 	@mkdir -p ./{$(BUILD_PATH),$(BIN_PATH)}

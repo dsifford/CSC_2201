@@ -12,10 +12,9 @@
 
 #include <stdexcept>
 #include <iostream>
-
 using namespace std;
 
-#pragma warning( disable : 4290 )
+// #pragma warning( disable : 4290 )
 
 //--------------------------------------------------------------------
 
@@ -26,8 +25,8 @@ class Queue {
 
 	virtual ~Queue();
 
-	virtual void enqueue(const DataType& newDataItem) throw (logic_error) = 0;
-	virtual DataType dequeue() throw (logic_error) = 0;
+	virtual void enqueue(const DataType& newDataItem) = 0;
+	virtual DataType dequeue() = 0;
 
 	virtual void clear() = 0;
 
@@ -41,8 +40,8 @@ class Queue {
 	// Consequently, they must only be declared here if they are being 
 	// implemented in the derived classes.
 #if LAB7_TEST2
-	virtual void putFront(const DataType& newDataItem) throw (logic_error) = 0;
-	virtual DataType getRear() throw (logic_error) = 0;
+	virtual void putFront(const DataType& newDataItem) = 0;
+	virtual DataType getRear() = 0;
 #endif
 #if LAB7_TEST3
 	virtual int getLength() const = 0;

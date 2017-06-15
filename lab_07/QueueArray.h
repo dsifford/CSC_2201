@@ -5,38 +5,38 @@
 
 #include <stdexcept>
 #include <iostream>
-
 using namespace std;
 
 #include "Queue.h"
 
-template <typename T>
-class QueueArray : public Queue<T> {
-  public:
-    QueueArray(int maxNumber = Queue<T>::MAX_QUEUE_SIZE);
-    QueueArray(const QueueArray& other);
-    QueueArray& operator=(const QueueArray& other);
-    ~QueueArray();
+template<typename T>
+class QueueArray: public Queue<T> {
+	public:
+		QueueArray(int maxNumber = Queue<T>::MAX_QUEUE_SIZE);
+		QueueArray(const QueueArray &other);
+		QueueArray& operator=(const QueueArray &other);
 
-    void enqueue(const T& newDataItem) throw (logic_error);
-    T dequeue() throw (logic_error);
+		~QueueArray();
 
-    void clear();
+		void enqueue(const T &newDataItem);
+		T dequeue();
 
-    bool isEmpty() const;
-    bool isFull() const;
+		void clear();
 
-    void putFront(const T& newDataItem) throw (logic_error);
-    T getRear() throw (logic_error);
-    int getLength() const;
+		bool isEmpty() const;
+		bool isFull() const;
 
-    void showStructure() const;
+		void putFront(const T &newDataItem);
+		T getRear();
+		int getLength() const;
 
-  private:
-    int maxSize;
-    int front;
-    int back;
-    T* dataItems;
+		void showStructure() const;
+
+	private:
+		int maxSize;
+		int front;
+		int back;
+		T *dataItems;
 };
 
 #endif
