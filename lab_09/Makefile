@@ -6,10 +6,12 @@ CFLAGS = -c $(LFLAGS)
 BUILD_PATH = build
 BIN_PATH = bin
 
+LAB_NUM = 9
+
 all: build
 
 build: bootstrap BSTree.o show9.o
-	$(CC) $(LFLAGS) build/BSTree.o build/show9.o test9.cpp -o $(BIN_PATH)/test9
+	$(CC) $(LFLAGS) -o $(BIN_PATH)/test$(LAB_NUM) build/BSTree.o build/show9.o test$(LAB_NUM).cpp 
 
 BSTree.o: BSTree.cpp BSTree.h
 	$(CC) $(CFLAGS) $*.cpp -o $(BUILD_PATH)/$@
@@ -27,4 +29,4 @@ clean:
 
 .PHONY: run
 run:
-	@ ./bin/test9
+	@ ./bin/test$(LAB_NUM)
