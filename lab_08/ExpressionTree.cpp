@@ -59,7 +59,7 @@ void ExprTree<T>::buildHelper(ExprTreeNode * &p, string &str) {
 
 template<typename T>
 bool ExprTree<T>::isOperator(const ExprTreeNode *p) const {
-	if (p == 0) return false;
+	if (p == 0) { return false; }
 	switch (p->dataItem) {
 		case '+':
 		case '-':
@@ -78,7 +78,7 @@ void ExprTree<T>::expression() const {
 
 template<typename T>
 void ExprTree<T>::exprHelper(ExprTreeNode *p) const {
-	if (p == 0) return;
+	if (p == 0) { return; }
 	if (!p->left && !p->right) {
 		cout << p->dataItem;
 		return;
@@ -105,7 +105,7 @@ void ExprTree<T>::exprHelper(ExprTreeNode *p) const {
 
 template<typename T>
 T ExprTree<T>::evaluate() const {
-	if (!root) throw logic_error("Tree is empty");
+	if (!root) { throw logic_error("Tree is empty"); }
 	return evalHelper(root);
 }
 
@@ -120,16 +120,16 @@ T ExprTree<T>::evalHelper(ExprTreeNode *p) const {
 	switch (p->dataItem) {
 		case '+':
 			return is_same<T, bool>::value
-			? evalHelper(p->left) || evalHelper(p->right)
-			: evalHelper(p->left) + evalHelper(p->right);
+			       ? evalHelper(p->left) || evalHelper(p->right)
+			       : evalHelper(p->left) + evalHelper(p->right);
 		case '-':
 			return is_same<T, bool>::value
-			? evalHelper(p->left) && ! evalHelper(p->right)
-			: evalHelper(p->left) - evalHelper(p->right);
+			       ? evalHelper(p->left) && !evalHelper(p->right)
+			       : evalHelper(p->left) - evalHelper(p->right);
 		case '*':
 			return is_same<T, bool>::value
-			? evalHelper(p->left) && evalHelper(p->right)
-			: evalHelper(p->left) * evalHelper(p->right);
+			       ? evalHelper(p->left) && evalHelper(p->right)
+			       : evalHelper(p->left) * evalHelper(p->right);
 		case '/':
 			if (is_same<T, bool>::value) {
 				throw logic_error("Invalid operator for type bool");
@@ -137,8 +137,8 @@ T ExprTree<T>::evalHelper(ExprTreeNode *p) const {
 			return evalHelper(p->left) / evalHelper(p->right);
 		default:
 			return is_same<T, bool>::value
-			? p->dataItem == '1'
-			: static_cast<T>(p->dataItem) - 48;
+			       ? p->dataItem == '1'
+			       : static_cast<T>(p->dataItem) - 48;
 	}
 }
 
@@ -149,7 +149,7 @@ void ExprTree<T>::clear() {
 
 template<typename T>
 void ExprTree<T>::clearHelper(ExprTreeNode * &p) {
-	if (p == 0) return;
+	if (p == 0) { return; }
 	clearHelper(p->left);
 	clearHelper(p->right);
 	p = 0;
@@ -162,7 +162,7 @@ void ExprTree<T>::commute() {
 
 template<typename T>
 void ExprTree<T>::commuteHelper(ExprTreeNode *p) {
-	if (p == 0) return;
+	if (p == 0) { return; }
 	ExprTreeNode *left = p->left;
 	p->left = p->right;
 	p->right = left;
@@ -172,11 +172,29 @@ void ExprTree<T>::commuteHelper(ExprTreeNode *p) {
 
 template<typename T>
 bool ExprTree<T>::isEquivalent(const ExprTree &source) const {
-	return true;
+	return isEquivalentHelper(root, source.root);
 }
 
 template<typename T>
-bool ExprTree<T>::isEquivalentHelper(const ExprTreeNode *x, const ExprTreeNode *y) const { return true; }
+bool ExprTree<T>::isEquivalentHelper(const ExprTreeNode *x, const ExprTreeNode *y) const {
+	if (!isOperator(x) && !isOperator(y)) { return true; }
+	if (!isOperator(x) && isOperator(y)) { return false; }
+	if (isOperator(x) && !isOperator(y)) { return false; }
+	if (x->dataItem != y->dataItem) { return false; }
+	switch (x->dataItem) {
+		case '+':
+		case '*':
+			return (
+				(x->left->dataItem + x->right->dataItem) == (y->left->dataItem + y->right->dataItem)
+			) && isEquivalentHelper(x->left, y->left) && isEquivalentHelper(x->right, y->right);
+		case '-':
+		case '/':
+			return (x->left->dataItem == y->left->dataItem) 
+				&& (x->right->dataItem == y->right->dataItem)
+				&& isEquivalentHelper(x->left, y->left) && isEquivalentHelper(x->right, y->right);
+	}
+	throw logic_error("An internal error occurred in isEquivalentHelper");
+}
 
 template<typename T>
 bool ExprTree<T>::isEmpty() const {
