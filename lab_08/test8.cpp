@@ -36,7 +36,9 @@ int main() {
 	testExpression.build();
 	testExpression.showStructure();
 	testExpression.expression();
-	cout << " = " << testExpression.evaluate() << endl;
+	cout << " = " << 
+	testExpression.evaluate() 
+	<< endl;
 
 	// Test the copy constructor.
 	dummy(testExpression);
@@ -90,7 +92,6 @@ int main() {
 	testExpression.showStructure();
 	cout << "** End of testing the basic expression tree" << endl;
 #endif
-	system("PAUSE");
 	return 0;
 }
 

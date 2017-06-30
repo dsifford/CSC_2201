@@ -33,6 +33,8 @@
 		"bitset": "cpp",
 		"memory": "cpp",
 		"string": "cpp",
-		"iterator": "cpp"
+		"iterator": "cpp",
+		"*.ipp": "cpp",
+		"hash_map": "cpp"
 	}
 }

@@ -27,3 +27,7 @@ clean:
 .PHONY: run
 run:
 	@ ./bin/test$(LAB_NUM)
+
+.PHONY: debug
+debug:
+	@ gdb ./bin/test$(LAB_NUM)

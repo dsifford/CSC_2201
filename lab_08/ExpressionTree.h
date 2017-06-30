@@ -17,6 +17,8 @@
 
 #include <stdexcept>
 #include <iostream>
+#include <string>
+#include <type_traits>
 using namespace std;
 
 template<typename T>
@@ -34,7 +36,7 @@ class ExprTree {
 		// Expression tree manipulation operations
 		void build();
 		void expression() const;
-		T evaluate() const throw(logic_error);
+		T evaluate() const;
 		void clear();              // Clear tree
 		void commute();
 		bool isEquivalent(const ExprTree &source) const;
@@ -57,7 +59,7 @@ class ExprTree {
 
 		// Recursive helper functions for the public member functions -- insert
 		// prototypes of these functions here.
-		void buildHelper(ExprTreeNode* &p);
+		void buildHelper(ExprTreeNode* &p, string &str);
 		void exprHelper(ExprTreeNode *p) const;
 		T evalHelper(ExprTreeNode *p) const;
 		void clearHelper(ExprTreeNode *&p);
@@ -65,6 +67,7 @@ class ExprTree {
 		void copyHelper(ExprTreeNode* &to, const ExprTreeNode *from);
 		void commuteHelper(ExprTreeNode *p);
 		bool isEquivalentHelper(const ExprTreeNode *p, const ExprTreeNode *q) const;
+		bool isOperator(const ExprTreeNode *p) const;
 
 		// Data member
 		ExprTreeNode *root;   // Pointer to the root node
