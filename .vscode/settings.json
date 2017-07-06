@@ -36,5 +36,7 @@
 		"iterator": "cpp",
 		"*.ipp": "cpp",
 		"hash_map": "cpp"
-	}
+	},
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false
 }
