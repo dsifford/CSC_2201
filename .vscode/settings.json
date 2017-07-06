@@ -35,7 +35,8 @@
 		"string": "cpp",
 		"iterator": "cpp",
 		"*.ipp": "cpp",
-		"hash_map": "cpp"
+		"hash_map": "cpp",
+		"string_view": "cpp"
 	},
 	"editor.tabSize": 4,
 	"editor.insertSpaces": false

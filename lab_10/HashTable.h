@@ -5,35 +5,36 @@
 
 #include <stdexcept>
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 #include "BSTree.cpp"
 
-template <typename T, typename KeyType>
+template<typename T, typename KeyType>
 class HashTable {
-  public:
-	HashTable(int initTableSize);
-	HashTable(const HashTable &other);
-	HashTable &operator=(const HashTable &other);
+	public:
+		HashTable(int initTableSize);
+		HashTable(const HashTable &other);
+		HashTable& operator=(const HashTable &other);
 
-	~HashTable();
+		~HashTable();
 
-	void insert(const T &newDataItem);
-	bool remove(const KeyType &deleteKey);
-	bool retrieve(const KeyType &searchKey, T &returnItem) const;
-	void clear();
+		void insert(const T &newDataItem);
+		bool remove(const KeyType &deleteKey);
+		bool retrieve(const KeyType &searchKey, T &returnItem) const;
+		void clear();
 
-	bool isEmpty() const;
+		bool isEmpty() const;
 
-	void showStructure() const;
+		void showStructure() const;
 
-	double standardDeviation() const;
+		double standardDeviation() const;
 
-  private:
-	void copyTable(const HashTable &source);
+	private:
+		void copyTable(const HashTable &source);
 
-	int tableSize;
-	BSTree<T, KeyType> *dataTable;
+		int tableSize;
+		BSTree<T, KeyType> *dataTable;
 };
 
 #endif // ifndef HASHTABLE_H

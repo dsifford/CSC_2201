@@ -13,6 +13,9 @@ all: build
 build: bootstrap HashTable.o BSTree.o
 	$(CC) $(LFLAGS) -o $(BIN_PATH)/test$(LAB_NUM) build/HashTable.o test$(LAB_NUM).cpp 
 
+buildalt: bootstrap HashTable.o BSTree.o
+	$(CC) $(LFLAGS) -o $(BIN_PATH)/test$(LAB_NUM) build/HashTable.o test10std.cpp 
+
 HashTable.o: HashTable.cpp show10.o HashTable.h
 	$(CC) $(CFLAGS) $*.cpp -o $(BUILD_PATH)/$@
 
