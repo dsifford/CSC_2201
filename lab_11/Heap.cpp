@@ -112,9 +112,10 @@ void Heap<T, KeyType, Comparator>::writeLevels() const {
 	levels = size / 2;
 	currentLevel = 1;
 	i = 0;
-	while (currentLevel <= levels) {
+	while (i < size) {
 		int firstOfNextLevel = ((i + 1) * 2);
 		while (i < firstOfNextLevel - 1) {
+			if (i == size) break;
 			cout << dataItems[i].getPriority() << " ";
 			i++;
 		}
