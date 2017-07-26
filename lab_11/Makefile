@@ -8,7 +8,7 @@ BIN_PATH = bin
 
 LAB_NUM = 11
 
-all: bootstrap buildheapsort
+all: bootstrap buildossim
 
 build: Heap.o
 	$(CC) $(LFLAGS) -o $(BIN_PATH)/test$(LAB_NUM) $(BUILD_PATH)/Heap.o test$(LAB_NUM).cpp 
@@ -42,5 +42,5 @@ clean:
 .PHONY: run
 run:
 	# @ ./bin/test$(LAB_NUM)pq
-	# @ ./bin/ossim
-	@ ./bin/heapsort
+	@ ./bin/ossim
+	# @ ./bin/heapsort
