@@ -17,19 +17,20 @@ using namespace std;
 void print_help();
 
 int main() {
-	WeightedGraph testGraph(8);         // Test graph
-	WeightedGraph::Vertex testVertex;            // Vertex
-	string v1,
-	       v2;   // Vertex labels
-	char cmd;                     // Input command
-	int wt;                       // Edge weight
+	WeightedGraph testGraph(8);
+	WeightedGraph::Vertex testVertex;
+	string v1;
+	string v2; 
+	char cmd;
+	int wt;
 
 	print_help();
 
 	do {
 
 #if LAB12_TEST1
-		testGraph.showShortestPaths();                 // In-lab Exercise 1
+		// In-lab Exercise 1
+		testGraph.showShortestPaths();
 #endif
 
 #if LAB12_TEST2
@@ -52,11 +53,11 @@ int main() {
 		}
 #endif
 
-		testGraph.showStructure();                   // Output graph
+		testGraph.showStructure();
 
-		cout << endl << "Command (H for help): ";                 // Read command
+		cout << endl << "Command (H for help): ";
 		cin >> cmd;
-		cmd = toupper(cmd);                        // Normalize to upper case
+		cmd = toupper(cmd);
 		if (cmd == '+'  ||  cmd == '?'  ||  cmd == '-') {
 			cin >> v1;
 		}
@@ -68,7 +69,8 @@ int main() {
 		}
 
 #if LAB12_TEST2
-		if (cmd == '+') {                       // In-lab Exercise 2
+		// In-lab Exercise 2
+		if (cmd == '+') {
 			char color;
 			cin >> color;
 			testVertex.setColor(color);
@@ -80,19 +82,19 @@ int main() {
 				print_help();
 				break;
 
-			case '+':                                 // insertVertex
+			case '+':
 				cout << "Insert vertex : " << v1 << endl;
 				testVertex.setLabel(v1);
 				testGraph.insertVertex(testVertex);
 				break;
 
-			case '=':                                 // insertEdge
+			case '=':
 				cout << "Insert edge : " << v1 << " " << v2 << " "
 				     << wt << endl;
 				testGraph.insertEdge(v1, v2, wt);
 				break;
 
-			case '?':                                 // retrieveVertex
+			case '?':
 				if (testGraph.retrieveVertex(v1, testVertex)) {
 					cout << "Vertex " << v1 << " exists" << endl;
 				}
@@ -101,7 +103,7 @@ int main() {
 				}
 				break;
 
-			case '#':                                 // edgeWeight
+			case '#':
 				if (testGraph.getEdgeWeight(v1, v2, wt)) {
 					cout << "Weight = " << wt << endl;
 				}
@@ -110,23 +112,23 @@ int main() {
 				}
 				break;
 
-			case '-':                                 // removeVertex
+			case '-':
 				cout << "Remove vertex " << v1 << endl;
 				testGraph.removeVertex(v1);
 				break;
 
-			case '!':                                 // removeEdge
+			case '!':
 				cout << "Remove the edge between vertices "
 				     << v1 << " and " << v2 << endl;
 				testGraph.removeEdge(v1, v2);
 				break;
 
-			case 'C':                                 // clear
+			case 'C':
 				cout << "Clear the graph" << endl;
 				testGraph.clear();
 				break;
 
-			case 'E':                                 // isEmpty
+			case 'E':
 				if (testGraph.isEmpty()) {
 					cout << "Graph is empty" << endl;
 				}
@@ -135,7 +137,7 @@ int main() {
 				}
 				break;
 
-			case 'F':                                 // isFull
+			case 'F':
 				if (testGraph.isFull()) {
 					cout << "Graph is full" << endl;
 				}
@@ -144,10 +146,10 @@ int main() {
 				}
 				break;
 
-			case 'Q':                              // Quit test program
+			case 'Q':
 				break;
 
-			default:                               // Invalid command
+			default:
 				cout << "Invalid command" << endl;
 		}
 	} while (cmd != 'Q');

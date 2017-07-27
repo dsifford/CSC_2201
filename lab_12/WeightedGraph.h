@@ -12,8 +12,8 @@
 
 #include <stdexcept>
 #include <iostream>
-#include <climits>    // For INT_MAX
-#include <string>     // Used for labels
+#include <climits> // for INT_MAX
+#include <string>  // for labels
 using namespace std;
 
 class WeightedGraph {
@@ -75,10 +75,10 @@ class WeightedGraph {
 		void setEdge(int row, int col, int wt); // Set edge weight using adjacency matrix indices
 
 		// Data members
-		int maxSize;        // Maximum number of vertices in the graph
-		int size;           // Actual number of vertices in the graph
-		int *adjMatrix;     // Adjacency matrix
-		Vertex *vertexList; // Vertex list
+		int maxSize; // Maximum number of vertices in the graph
+		int size;    // Actual number of vertices in the graph
+		int *adjMatrix;
+		Vertex *vertexList;
 };
 
-#endif          // #ifndef WEIGHTEDGRAPH_H
+#endif
