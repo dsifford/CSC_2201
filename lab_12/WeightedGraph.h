@@ -14,6 +14,7 @@
 #include <iostream>
 #include <climits> // for INT_MAX
 #include <string>  // for labels
+#include <algorithm>
 using namespace std;
 
 class WeightedGraph {

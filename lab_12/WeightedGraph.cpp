@@ -16,6 +16,7 @@ WeightedGraph::WeightedGraph(int maxNumber) {
 	maxSize = maxNumber;
 	size = 0;
 	adjMatrix = new int[maxSize * maxSize];
+	fill_n(adjMatrix, maxSize * maxSize, -1);
 	vertexList = new Vertex[maxSize];
 }
 
